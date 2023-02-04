@@ -8,6 +8,7 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('username', 'email', 'is_staff')
 
 class AdSerializer(serializers.ModelSerializer):
+    author = UserSerializer()
     class Meta:
         model = Ad
-        fields = ('title', 'text', 'status', 'created_at')
+        fields = ('title', 'description', 'category', 'status', 'created_at', 'author')
