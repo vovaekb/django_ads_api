@@ -10,4 +10,4 @@ class Ad(models.Model):
     description = models.TextField(max_length=350)
     category = models.CharField(max_length=40)
     status = models.CharField(max_length=15)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
