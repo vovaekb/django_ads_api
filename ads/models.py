@@ -5,7 +5,9 @@ class User(AbstractUser):
     pass
 
 class Ad(models.Model):
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=64)
     created_at = models.DateTimeField(auto_now_add=True)
-    text = models.TextField(max_length=350)
+    description = models.TextField(max_length=350)
+    category = models.CharField(max_length=40)
     status = models.CharField(max_length=15)
+    author = models.ForeignKey(User, on_delete=models.SET_NULL)
