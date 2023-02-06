@@ -19,6 +19,7 @@ class ListAdsView(generics.ListAPIView):
     permission_classes = (IsAdminUser,)
 
 class AdsAPI(APIView):
+    permission_classes = (IsAdminUser,)
     def get_object(self, id):
         try:
             return Ad.objects.get(id=id)
