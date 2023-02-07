@@ -19,7 +19,7 @@ class TestAds(APITestCase):
     def test_update_ads(self):
         # Correct case
         response = self.client.put(
-            reverse('ads/status'),
+            'ads/status',
             data=json.dumps(self.payd_data),
             content_type='application/json'
         )
