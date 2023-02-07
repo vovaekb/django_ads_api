@@ -21,11 +21,11 @@ class TestAds(APITestCase):
     def test_update_ads_user(self):
         # Invalid case - normal user
         response = self.client.put(
-            'ads/status',
+            '/ads/status',
             data=json.dumps(self.payd_data),
             content_type='application/json'
         )
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response, 400)
 
     def test_update_ads_superuser(self):
         # Correct case - superuser
