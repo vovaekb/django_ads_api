@@ -18,7 +18,7 @@ class TestAds(APITestCase):
         for i in range(TEST_SIZE):
             self.ads.append(Ad.objects.create(title='Test ad {}'.format(i), category='разное', status='отказ', author=self.user)) 
 
-    def test_update_ads(self):
+    def test_update_ads_user(self):
         # Invalid case - normal user
         response = self.client.put(
             'ads/status',
@@ -26,6 +26,8 @@ class TestAds(APITestCase):
             content_type='application/json'
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_update_ads_superuser(self):
         # Correct case - superuser
         self.assertTrue(self.client.login(username='admin', password='123'))
         response = self.client.put(
