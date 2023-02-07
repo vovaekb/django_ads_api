@@ -10,7 +10,7 @@ TEST_SIZE = 10
 class TestAds(APITestCase):
     def setUp(self):
         self.ids = list(range(1, 6))
-        self.payd_data = {'status': 'оплачено', 'ids': self.ids}
+        self.payload_data = {'status': 'оплачено', 'ids': self.ids}
         self.ads = []
         self.user = User.objects.create_user('test_user_1', 'example@test.com', '123')
         self.superuser = User.objects.create_superuser('admin', 'example@test.com', '123')
@@ -22,7 +22,7 @@ class TestAds(APITestCase):
         # Invalid case - normal user
         response = self.client.put(
             '/ads/status',
-            data=json.dumps(self.payd_data),
+            data=json.dumps(self.payload_data),
             content_type='application/json'
         )
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
@@ -32,7 +32,7 @@ class TestAds(APITestCase):
         self.assertTrue(self.client.login(username='admin', password='123'))
         response = self.client.put(
             '/ads/status',
-            data=json.dumps(self.payd_data),
+            data=json.dumps(self.payload_data),
             content_type='application/json'
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -43,7 +43,7 @@ class TestAds(APITestCase):
         self.assertTrue(self.client.login(username='admin', password='123'))
         response = self.client.put(
             '/ads/status',
-            data=json.dumps(self.payd_data),
+            data=json.dumps(self.payload_data),
             content_type='application/json'
         )
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
