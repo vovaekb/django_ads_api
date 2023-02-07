@@ -31,7 +31,7 @@ class TestAds(APITestCase):
             username='admin', password='123'
         )
         response = self.client.put(
-            'ads/status',
+            'ads/status/',
             data=json.dumps(self.payd_data),
             content_type='application/json'
         )
