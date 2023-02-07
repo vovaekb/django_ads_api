@@ -9,7 +9,7 @@ TEST_SIZE = 10
 
 class TestAds(APITestCase):
     def setUp(self):
-        self.ids = list(range(5))
+        self.ids = list(range(1, 6))
         self.payd_data = {'status': 'оплачено', 'ids': self.ids}
         self.ads = []
         self.user = User.objects.create_user('test_user_1', 'example@test.com', '123')
@@ -27,11 +27,9 @@ class TestAds(APITestCase):
         # )
         # self.assertEqual(response.status_code, status.HTTP_200_OK)
         # Correct case = superuser
-        self.logged_in = self.client.login(
-            username='admin', password='123'
-        )
+        self.assertTrue(self.client.login(username='admin', password='123'))
         response = self.client.put(
-            'ads/status/',
+            '/ads/status',
             data=json.dumps(self.payd_data),
             content_type='application/json'
         )
