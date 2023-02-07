@@ -17,7 +17,7 @@ class TestAds(APITestCase):
             self.ads.append(Ad.objects.create(title='Test ad {}'.format(i), category='разное', status='отказ', author=self.user)) 
 
     def test_update_ads(self):
-        # Correct case
+        # Invalid case
         response = self.client.put(
             'ads/status',
             data=json.dumps(self.payd_data),
