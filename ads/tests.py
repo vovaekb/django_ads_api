@@ -21,7 +21,7 @@ class TestAds(APITestCase):
     def test_update_ads_user(self):
         # Invalid case - normal user
         response = self.client.put(
-            'ads/status',
+            '/ads/status',
             data=json.dumps(self.payd_data),
             content_type='application/json'
         )
