@@ -37,6 +37,8 @@ class AdsAPI(APIView):
     def put(self, request, *args, **kwargs):
         id_list = request.data['ids']
         self.validate_ids(id_list=id_list)
+        if 'status' not in request.data:
+            return status.HTTP_400_BAD_REQUEST
         instances = []
         for id in id_list:
             obj = self.get_object(id=id)
