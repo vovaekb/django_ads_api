@@ -37,14 +37,14 @@ class TestAds(APITestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-    # def test_invalid_data(self):
-    #     # Invalid case - missing parameter in payload
-    #     self.payload_data = {'ids': self.ids}
-    #     self.assertTrue(self.client.login(username='admin', password='123'))
-    #     response = self.client.put(
-    #         '/ads/status',
-    #         data=json.dumps(self.payload_data),
-    #         content_type='application/json'
-    #     )
-    #     self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+    def test_invalid_data(self):
+        # Invalid case - missing parameter in payload
+        self.payload_data = {'ids': self.ids}
+        self.assertTrue(self.client.login(username='admin', password='123'))
+        response = self.client.put(
+            '/ads/status',
+            data=json.dumps(self.payload_data),
+            content_type='application/json'
+        )
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
