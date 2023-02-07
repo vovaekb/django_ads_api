@@ -39,6 +39,8 @@ class TestAds(APITestCase):
 
     def test_ad_does_not_exist(self):
         self.ids = list(range(0, 5))
+        self.payd_data = {'status': 'отказ', 'ids': self.ids}
+        self.assertTrue(self.client.login(username='admin', password='123'))
         response = self.client.put(
             '/ads/status',
             data=json.dumps(self.payd_data),
