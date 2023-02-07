@@ -27,11 +27,9 @@ class TestAds(APITestCase):
         # )
         # self.assertEqual(response.status_code, status.HTTP_200_OK)
         # Correct case = superuser
-        self.logged_in = self.client.login(
-            username='admin', password='123'
-        )
+        self.assertTrue(self.client.login(username='admin', password='123'))
         response = self.client.put(
-            'ads/status/',
+            '/ads/status',
             data=json.dumps(self.payd_data),
             content_type='application/json'
         )
