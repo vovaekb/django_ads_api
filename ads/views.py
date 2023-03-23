@@ -10,15 +10,26 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAdminUser
 from rest_framework.decorators import api_view
-from .models import User, Ad
-from .serializers import UserSerializer, AdSerializer
+from .models import Ad
+from .serializers import AdSerializer
 
 class ListAdsView(generics.ListAPIView):
     queryset = Ad.objects.all()
     serializer_class = AdSerializer
     permission_classes = (IsAdminUser,)
 
+
 class AdsAPI(APIView):
+    """
+    get_object:
+    get single object by ID
+
+    validate_ids:
+    check if correct IDs were privided in request payload
+
+    put:
+    update objects
+    """
     permission_classes = (IsAdminUser,)
     def get_object(self, id):
         try:
