@@ -4,7 +4,7 @@
 
 Features:
 - list ads in database
-- option for setting the status "paid" or "octase" for the list of teasers
+- option for setting the status "paid" or "rejected" for the list of teasers
 
 ## Run application
 Clone the repo, change to the project root folder. Install dependencies from requirements.txt file:
