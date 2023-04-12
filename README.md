@@ -1,4 +1,4 @@
-# django_ads_app
+# django_ads_api
 
 :newspaper: Simple REST API application for ads on Python Django REST Framework.
 
